@@ -10,9 +10,8 @@ public class OrderItem {
 	public OrderItem() {
 	}
 
-	public OrderItem(Integer quantity, Double price, Product product) {
+	public OrderItem(Integer quantity, Product product) {
 		this.quantity = quantity;
-		this.price = price;
 		this.product = product;
 	}
 
@@ -28,10 +27,6 @@ public class OrderItem {
 		return price;
 	}
 
-	public void setPrice(Double price) {
-		this.price = price;
-	}
-
 	public Product getProduct() {
 		return product;
 	}
@@ -41,6 +36,21 @@ public class OrderItem {
 	}
 	
 	public double subTotal() {
-		return quantity*price;
+		price=quantity*product.getPrice();
+		return price;
 	}
+
+	public String toString() {
+		return product.getName()
+				+ ", "
+				+String.format("%.2f", product.getPrice())
+				+", "
+				+"Quantity: "
+				+quantity
+				+", Subtotal: $"
+				+subTotal()
+				+"\n";
+	}
+	
+	
 }
